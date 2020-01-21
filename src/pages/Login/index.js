@@ -7,12 +7,12 @@ import { addEmail, addPassword, addRemember } from '../../actions/user';
 import { Header, Input } from '../../components';
 
 export default function Login() {
+
   return (
     <Container>
       <Header width='300px' height='80px' />
       <Input
         type='email'
-        action={addEmail}
         placeholder='E-mail'
         Icon={MdPerson}
         IconSize={25}
@@ -21,14 +21,17 @@ export default function Login() {
       />
       <Input
         type='password'
-        action={addPassword}
         placeholder='Senha'
         Icon={MdVpnKey}
         IconSize={25}
         IconColor='#999'
         width='250px'
       />
-      <Input type='checkbox' action={addRemember} />
+      <Input
+        type='checkbox'
+        onBlur={() => }
+        action={addRemember}
+      />
     </Container>
   );
 }

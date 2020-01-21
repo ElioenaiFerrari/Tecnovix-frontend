@@ -1,5 +1,8 @@
+import Login from './Login';
 import Main from './Main';
+import Dashboard from './Dashboard';
+
 /**
  * @All_Pages
  */
-export { Main };
+export { Login, Main, Dashboard };

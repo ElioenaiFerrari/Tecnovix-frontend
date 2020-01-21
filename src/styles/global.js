@@ -10,3 +10,5 @@ export default createGlobalStyle`
     font-family: 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     --webkit-font-smoothing: antialiased !important;
 `;
+
+export const primaryColor = '#ff5722';

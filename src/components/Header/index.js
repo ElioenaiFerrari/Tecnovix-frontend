@@ -14,8 +14,10 @@ const Header = React.memo(props => {
   };
   return (
     <Container props={props}>
-      {props.light_logo && <img src={light_logo} onClick={mainPage} />}
-      {!props.light_logo && <img src={logo} onClick={mainPage} />}
+      {props.light_logo && (
+        <img src={light_logo} {...props} onClick={mainPage} />
+      )}
+      {!props.light_logo && <img src={logo} {...props} onClick={mainPage} />}
     </Container>
   );
 });

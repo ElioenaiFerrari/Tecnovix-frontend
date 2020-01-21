@@ -1,5 +1,5 @@
 export default function user(
-  state = { email: null, password: null, remember: false },
+  state = { email: '', password: '', remember: false },
   action
 ) {
   switch (action.type) {

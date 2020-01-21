@@ -1,6 +1,7 @@
 import React from 'react';
 import { isSigned } from '../../services/auth';
 import logo from '../../assets/image/logo.png';
+import light_logo from '../../assets/image/light_logo.svg';
 
 import { Container } from './styles';
 
@@ -13,7 +14,8 @@ const Header = React.memo(props => {
   };
   return (
     <Container props={props}>
-      <img src={logo} onClick={mainPage} />
+      {props.light_logo && <img src={light_logo} onClick={mainPage} />}
+      {!props.light_logo && <img src={logo} onClick={mainPage} />}
     </Container>
   );
 });

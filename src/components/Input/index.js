@@ -9,10 +9,10 @@ const Input = React.memo(props => {
   const action = React.useCallback(
     ({ target }) => {
       console.log(state);
-
       dispatch(props.action(target.value));
     },
-    [dispatch, props, state]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state]
   );
 
   return (
@@ -21,7 +21,11 @@ const Input = React.memo(props => {
         <props.Icon
           size={props.IconSize}
           color={props.IconColor}
-          style={{ position: 'absolute', alignSelf: 'center', marginLeft: 10 }}
+          style={{
+            position: 'absolute',
+            alignSelf: 'center',
+            marginLeft: 10
+          }}
         />
       )}
       <input {...props} onChange={action} />

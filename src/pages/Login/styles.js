@@ -9,8 +9,8 @@ export const Container = styled.form`
   margin-top: 50px;
 
   div.row {
-    width: 320px;
-    margin-left: 30px;
+    width: 330px;
+    margin-left: 35px;
     flex-direction: row;
     display: flex;
     justify-content: space-between;

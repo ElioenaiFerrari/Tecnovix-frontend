@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container } from './styles';
-import { Button, Input } from '../index';
+import { Input } from '../index';
 
 import { primaryColor } from '../../styles/global';
 

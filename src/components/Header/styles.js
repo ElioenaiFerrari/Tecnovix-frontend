@@ -11,5 +11,6 @@ export const Container = styled.div`
   img {
     width: ${props => props.props.width};
     height: ${props => props.props.height};
+    margin-top: 50px;
   }
 `;

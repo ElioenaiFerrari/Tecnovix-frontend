@@ -8,10 +8,12 @@ import { primaryColor } from '../../styles/global';
 export default function Forgot() {
   const handleSubmit = () => {};
 
+  const backLogin = () => (window.location.href = '/login');
+
   return (
     <>
       <Container>
-        <Header width='200px' height='50px' />
+        {/* <Header width='200px' height='50px' /> */}
         <Input
           action={addEmail}
           type='email'
@@ -22,7 +24,8 @@ export default function Forgot() {
           width='300px'
           style={{
             margin: '20px 0',
-            width: '300px'
+            width: '300px',
+            boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
           }}
         />
         <Input
@@ -30,12 +33,27 @@ export default function Forgot() {
           value='Recuperar'
           onClick={handleSubmit}
           style={{
-            width: '320px',
+            boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+            width: '300px',
             backgroundColor: primaryColor,
             color: '#fff',
             fontWeight: 'bold',
             fontSize: 16,
             cursor: 'pointer'
+          }}
+        />
+        <Input
+          type='button'
+          value='Voltar ao login'
+          onClick={backLogin}
+          style={{
+            border: 'none',
+            background: 'none',
+            color: primaryColor,
+            fontSize: '12px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            marginLeft: '200px'
           }}
         />
       </Container>

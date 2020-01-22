@@ -1,0 +1,107 @@
+{
+  "authenticate": [
+    {
+      "id": 1,
+      "email": "admin@admin.com",
+      "password": "123",
+      "token": "123456789",
+      "signed": true
+    },
+    {
+      "id": 2,
+      "email": "manager@manager.com",
+      "password": "123",
+      "token": "123456789",
+      "signed": false
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Elioenai Ferrari",
+      "career": "Aprendiz de feitiçaria"
+    },
+    {
+      "id": 2,
+      "name": "Adenis",
+      "career": "Dono da Tecnovix(Gente finíssima HAHAHA) Bruxo supremo"
+    },
+    {
+      "id": 3,
+      "name": "Reginaldo Gutter",
+      "career": "Mestre das trevas(Toca o terror nos novatos)"
+    }
+  ],
+  "progress": [
+    {
+      "id": 1,
+      "title": "Clientes cadastrados",
+      "data": "1000"
+    },
+    {
+      "id": 2,
+      "title": "Projetos cadastrados",
+      "data": "1000"
+    },
+    {
+      "id": 3,
+      "title": "% Projetos concluídos",
+      "data": "56%"
+    },
+    {
+      "id": 4,
+      "title": "R$ Total faturado",
+      "data": "R$ 15.678.43"
+    },
+    {
+      "id": 5,
+      "title": "Empresas vinculadas",
+      "data": "82"
+    },
+    {
+      "id": 6,
+      "title": "Projetos por ano",
+      "data": "3672"
+    },
+    {
+      "id": 7,
+      "title": "% Projetos parados",
+      "data": "13%"
+    },
+    {
+      "id": 8,
+      "title": "R$ Total de faturas ",
+      "data": "R$ 3.213.74"
+    }
+  ],
+  "trendings": [
+    {
+      "id": 1,
+      "data": {
+        "title": "2019",
+        "value": "67"
+      }
+    },
+    {
+      "id": 2,
+      "data": {
+        "title": "2019/2",
+        "value": "66"
+      }
+    },
+    {
+      "id": 3,
+      "data": {
+        "title": "2020/1",
+        "value": "79"
+      }
+    },
+    {
+      "id": 4,
+      "data": {
+        "title": "2020/2",
+        "value": "83"
+      }
+    }
+  ]
+}

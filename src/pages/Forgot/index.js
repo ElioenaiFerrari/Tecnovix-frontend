@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdPerson } from 'react-icons/md';
 import { Container } from './styles';
-import { Input, Header, Footer } from '../../components';
+import { Input, Footer } from '../../components';
 import { addEmail } from '../../actions/user';
 import { primaryColor } from '../../styles/global';
 

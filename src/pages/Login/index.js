@@ -3,9 +3,10 @@ import { Container } from './styles';
 import { primaryColor } from '../../styles/global';
 import { MdPerson, MdVpnKey } from 'react-icons/md';
 import { addEmail, addPassword, addRemember } from '../../actions/user';
-import { Header, Input, Footer } from '../../components';
+import { Input, Footer } from '../../components';
 import { useSelector } from 'react-redux';
 import { onSignIn } from '../../services/auth';
+import api from '../../services/api';
 
 export default function Login() {
   /**
@@ -13,34 +14,59 @@ export default function Login() {
    */
   const user = useSelector(state => state.user);
 
-  const [remember, setRemember] = React.useState(false);
+  const [remember, setRemember] = React.useState(true);
 
   /**
    * Remember?
    * yes => next time open in Main page
    * no => next time open in Login page
    */
-  const handleRemember = React.useCallback(() => setRemember(c => !c), [
-    setRemember
-  ]);
+  const handleRemember = React.useCallback(() => {
+    setRemember(!remember);
+    console.log(remember);
+  }, [remember]);
   /**
    * On click submit button
    */
-  const handleSubmit = event => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    /**
-     * Validate form
-     */
-    if (user.email.length && user.password.length) {
-      if (remember) {
-        onSignIn();
-        return (window.location.href = '/');
+    try {
+      /**
+       * Validate form
+       */
+      if (user.email.length && user.password.length) {
+        const { data } = await api.get('/authenticate', {
+          email: user.email,
+          password: user.password
+        });
+
+        /**
+         * Run all array and compare attributes=>
+         * if true => user login in Sys
+         * if not => user try again
+         */
+        let auth = false;
+        data.map(item => {
+          if (item.email === user.email && item.password === user.password) {
+            auth = true;
+          }
+        });
+        /**
+         * if auth => redirect to dashboard
+         * if not => nothing else
+         */
+        if (auth) {
+          onSignIn('Token');
+          return (window.location.href = '/');
+        }
+        return alert('Email ou senha incorretos!');
       }
-      return (window.location.href = '/');
+    } catch (error) {
+      console.log(error);
     }
 
     return alert(new Error('O campo email e senha são obrigatórios!'));
-  };
+  }
   /**
    * Case forgot password
    */
@@ -51,7 +77,6 @@ export default function Login() {
   return (
     <>
       <Container>
-        {/* <Header width='200px' height='50px' /> */}
         <Input
           action={addEmail}
           type='email'
@@ -85,7 +110,6 @@ export default function Login() {
             id='remember'
             label='Lembrar-me'
             onClick={handleRemember}
-            action={addRemember}
             value={remember}
           />
           <Input

@@ -1,9 +1,11 @@
 import Header from './Header';
 import Input from './Input';
-import Button from './Button';
 import Footer from './Footer';
 import Menu from './Menu';
+import Employee from './Employee';
+import Progress from './Progress';
+import Chart from './Chart';
 /**
  * @All_Components
  */
-export { Header, Input, Button, Footer, Menu };
+export { Header, Input, Footer, Menu, Employee, Progress, Chart };

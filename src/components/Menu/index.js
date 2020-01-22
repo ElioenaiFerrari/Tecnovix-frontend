@@ -1,8 +1,15 @@
 import React from 'react';
-import { slide as Slide } from 'react-burger-menu';
+import Slide from 'react-burger-menu/lib/menus/slide';
 import { Container } from './styles';
 import { Header } from '../index';
-import { MdSupervisorAccount, MdDashboard, MdWork } from 'react-icons/md';
+import {
+  MdSupervisorAccount,
+  MdDashboard,
+  MdWork,
+  MdMenu,
+  MdKeyboardReturn
+} from 'react-icons/md';
+import { primaryColor } from '../../styles/global';
 
 const Menu = React.memo(props => {
   return (
@@ -10,8 +17,10 @@ const Menu = React.memo(props => {
       <Slide
         {...props}
         id='menu'
-        width={'250px'}
+        width={'300px'}
         pageWrapId={'elastic'}
+        customBurgerIcon={<MdMenu color={primaryColor} />}
+        customCrossIcon={<MdKeyboardReturn color={primaryColor} />}
         outerContainerId={'App'}
       >
         <Header
@@ -20,7 +29,7 @@ const Menu = React.memo(props => {
           height='50px'
           style={{ marginLeft: 20 }}
         />
-        <div className='menu-items'>
+        <div className='menu-items' style={{ marginTop: 50 }}>
           <MdDashboard color='#FFF' size={15} />
           <a href='/dashboard'>Dashboard</a>
         </div>

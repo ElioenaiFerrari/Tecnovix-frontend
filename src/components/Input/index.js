@@ -15,8 +15,14 @@ const Input = React.memo(props => {
     [state]
   );
 
+  const validate = React.useCallback(({ target }) => {
+    if (!target.value.length) {
+      document.write('Ola');
+    }
+  });
+
   return (
-    <Container props={props}>
+    <Container props={props} onSubmit={validate}>
       {props.Icon && (
         <props.Icon
           size={props.IconSize}
@@ -28,7 +34,7 @@ const Input = React.memo(props => {
           }}
         />
       )}
-      <input {...props} onChange={action} />
+      <input {...props} onChange={props.action ? action : null} />
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
     </Container>
   );

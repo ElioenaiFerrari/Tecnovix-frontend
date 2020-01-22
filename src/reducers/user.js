@@ -7,8 +7,6 @@ export default function user(
       return { ...state, email: action.email };
     case 'ADD_PASSWORD':
       return { ...state, password: action.password };
-    case 'ADD_REMEMBER':
-      return { ...state, remember: action.remember };
     default:
       return state;
   }

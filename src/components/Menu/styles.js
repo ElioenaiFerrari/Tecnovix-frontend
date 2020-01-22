@@ -4,6 +4,9 @@ import { primaryColor } from '../../styles/global';
 export const Container = styled.div`
   position: fixed;
   width: 50px;
+  top: 0;
+  left: 0;
+  z-index: 1;
 
   #menu {
     display: flex;
@@ -12,6 +15,9 @@ export const Container = styled.div`
     align-items: center;
     background: #2f3c48;
     position: fixed;
+    z-index: 1;
+    text-decoration: none;
+    color: #fff;
   }
 
   .menu-items {
@@ -19,8 +25,8 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    padding: 15px 5px;
+    width: 300px;
+    padding: 20px 10px;
   }
 
   .menu-items:hover {
@@ -32,5 +38,6 @@ export const Container = styled.div`
     color: #fff;
     font-weight: bold;
     margin-left: 10px;
+    width: 100%;
   }
 `;

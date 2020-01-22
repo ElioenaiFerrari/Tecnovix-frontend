@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   width: ${props => props.props.width};
   height: ${props => props.props.height};
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 
   img {
     width: ${props => props.props.width};

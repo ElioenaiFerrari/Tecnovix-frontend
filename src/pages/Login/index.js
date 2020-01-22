@@ -13,8 +13,9 @@ export default function Login() {
    * All 'attributes' of user
    */
   const user = useSelector(state => state.user);
-
   const [remember, setRemember] = React.useState(true);
+  const [dialogEmail, setDialogEmail] = React.useState(false);
+  const [dialogPassword, setDialogPassword] = React.useState(false);
 
   /**
    * Remember?
@@ -60,12 +61,21 @@ export default function Login() {
           return (window.location.href = '/');
         }
         return alert('Email ou senha incorretos!');
+      } else if (!user.email.length && !user.password.length) {
+        setDialogEmail(true);
+        setDialogPassword(true);
+      } else if (!user.email.length) {
+        setDialogEmail(true);
+      } else {
+        setDialogPassword(true);
       }
+      return setTimeout(() => {
+        setDialogEmail(false);
+        setDialogPassword(false);
+      }, 1500);
     } catch (error) {
       console.log(error);
     }
-
-    return alert(new Error('O campo email e senha são obrigatórios!'));
   }
   /**
    * Case forgot password
@@ -78,28 +88,35 @@ export default function Login() {
     <>
       <Container>
         <Input
+          required
+          dialog={dialogEmail}
           action={addEmail}
           type='email'
+          fieldName='email'
           placeholder='E-mail*'
           Icon={MdPerson}
           IconSize={20}
           IconColor='rgba(0, 0, 0, 0.3)'
           width='300px'
           style={{
-            margin: '20px 0',
             width: '300px',
+            marginTop: '10px',
             boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
           }}
         />
         <Input
+          required
+          dialog={dialogPassword}
           action={addPassword}
           type='password'
+          fieldName='Senha'
           placeholder='Senha*'
           Icon={MdVpnKey}
           IconSize={20}
           IconColor='rgba(0, 0, 0, 0.3)'
           style={{
             width: '300px',
+            marginTop: '10px',
             boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
           }}
         />

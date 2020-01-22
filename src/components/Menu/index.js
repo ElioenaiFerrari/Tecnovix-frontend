@@ -7,7 +7,7 @@ import {
   MdDashboard,
   MdWork,
   MdMenu,
-  MdKeyboardReturn
+  MdClose
 } from 'react-icons/md';
 import { primaryColor } from '../../styles/global';
 
@@ -20,7 +20,7 @@ const Menu = React.memo(props => {
         width={'300px'}
         pageWrapId={'elastic'}
         customBurgerIcon={<MdMenu color={primaryColor} />}
-        customCrossIcon={<MdKeyboardReturn color={primaryColor} />}
+        customCrossIcon={<MdClose color={primaryColor} />}
         outerContainerId={'App'}
       >
         <Header
@@ -31,7 +31,7 @@ const Menu = React.memo(props => {
         />
         <div className='menu-items' style={{ marginTop: 50 }}>
           <MdDashboard color='#FFF' size={15} />
-          <a href='/dashboard'>Dashboard</a>
+          <a href='/'>Dashboard</a>
         </div>
         <div className='menu-items'>
           <MdSupervisorAccount color='#FFF' size={15} />

@@ -4,9 +4,19 @@ import { Container } from './styles';
 import { Input, Footer } from '../../components';
 import { addEmail } from '../../actions/user';
 import { primaryColor } from '../../styles/global';
+import { useSelector } from 'react-redux';
 
 export default function Forgot() {
-  const handleSubmit = () => {};
+  const [dialogEmail, setDialogEmail] = React.useState(false);
+  const user = useSelector(state => state.user);
+
+  const handleSubmit = () => {
+    if (!user.email.length) {
+      setDialogEmail(true);
+    }
+
+    return setTimeout(() => setDialogEmail(false), 1500);
+  };
 
   const backLogin = () => (window.location.href = '/login');
 
@@ -17,13 +27,16 @@ export default function Forgot() {
         <Input
           action={addEmail}
           type='email'
-          placeholder='E-mail'
+          dialog={dialogEmail}
+          placeholder='E-mail*'
+          required
+          fieldName='email'
           Icon={MdPerson}
           IconSize={20}
           IconColor='rgba(0, 0, 0, 0.3)'
           width='300px'
           style={{
-            margin: '20px 0',
+            margin: '10px 0',
             width: '300px',
             boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
           }}

@@ -7,16 +7,7 @@ import { primaryColor } from '../../styles/global';
 import { useSelector } from 'react-redux';
 
 export default function Forgot() {
-  const [dialogEmail, setDialogEmail] = React.useState(false);
   const user = useSelector(state => state.user);
-
-  const handleSubmit = () => {
-    if (!user.email.length) {
-      setDialogEmail(true);
-    }
-
-    return setTimeout(() => setDialogEmail(false), 1500);
-  };
 
   const backLogin = () => (window.location.href = '/login');
 
@@ -27,10 +18,10 @@ export default function Forgot() {
         <Input
           action={addEmail}
           type='email'
-          dialog={dialogEmail}
           placeholder='E-mail*'
           required
           fieldName='email'
+          autoFocus
           Icon={MdPerson}
           IconSize={20}
           IconColor='rgba(0, 0, 0, 0.3)'
@@ -44,7 +35,6 @@ export default function Forgot() {
         <Input
           type='submit'
           value='Recuperar'
-          onClick={handleSubmit}
           style={{
             boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
             width: '300px',

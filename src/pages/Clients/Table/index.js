@@ -7,7 +7,7 @@ import { Container } from './styles';
 import Header from '../Header';
 import api from '../../../services/api';
 
-const Table = React.memo(() => {
+const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
   const [clients, setClients] = React.useState([]);
 
   React.useEffect(() => {
@@ -68,12 +68,13 @@ const Table = React.memo(() => {
 
   return (
     <Container>
-      <Header />
+      <Header modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
       <div className='ag-theme-material'>
         <AgGridReact
           headerHeight={40}
           rowStyle={{ color: 'rgba(0, 0, 0, 0.6)' }}
           columnDefs={clients.columnDefs}
+          colWidth={270}
           rowData={clients.rowData}
         ></AgGridReact>
       </div>

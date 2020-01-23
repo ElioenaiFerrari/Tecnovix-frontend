@@ -103,5 +103,35 @@
         "value": "83"
       }
     }
+  ],
+  "clients": [
+    {
+      "id": 6.4411529794245475,
+      "name": "ElioenaiFerrari",
+      "email": "",
+      "projects": 0,
+      "created_at": "Wed Jan 22 2020"
+    },
+    {
+      "id": 30.72420754062294,
+      "name": "Elioenai Ferrari",
+      "email": "elioenaiferrari@gmail.com",
+      "projects": 1,
+      "created_at": "Wed Jan 22 2020"
+    },
+    {
+      "id": 19.876421598549186,
+      "name": "Elioenai Pinheiro Ferrari",
+      "email": "elioenaiferrari@gmail.com",
+      "projects": 1,
+      "created_at": "Wed Jan 22 2020"
+    },
+    {
+      "id": 7.184274780293065,
+      "name": "Reginaldo",
+      "email": "blabla",
+      "projects": 4,
+      "created_at": "Wed Jan 22 2020"
+    }
   ]
 }

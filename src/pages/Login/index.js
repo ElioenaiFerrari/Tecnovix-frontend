@@ -2,10 +2,10 @@ import React from 'react';
 import { Container } from './styles';
 import { primaryColor } from '../../styles/global';
 import { MdPerson, MdVpnKey } from 'react-icons/md';
-import { addEmail, addPassword, addRemember } from '../../actions/user';
+import { addEmail, addPassword } from '../../actions/user';
 import { Input, Footer } from '../../components';
 import { useSelector } from 'react-redux';
-import { onSignIn } from '../../services/auth';
+import { onSignIn, setRemember } from '../../services/auth';
 import api from '../../services/api';
 
 export default function Login() {
@@ -13,19 +13,17 @@ export default function Login() {
    * All 'attributes' of user
    */
   const user = useSelector(state => state.user);
-  const [remember, setRemember] = React.useState(true);
-  const [dialogEmail, setDialogEmail] = React.useState(false);
-  const [dialogPassword, setDialogPassword] = React.useState(false);
-
+  const [checkbox, setCheckbox] = React.useState(false);
   /**
    * Remember?
    * yes => next time open in Main page
    * no => next time open in Login page
    */
-  const handleRemember = React.useCallback(() => {
-    setRemember(!remember);
-    console.log(remember);
-  }, [remember]);
+  const handleRemember = React.useCallback(({ target }) => {
+    console.log(target.value);
+
+    setCheckbox(target.value);
+  }, []);
   /**
    * On click submit button
    */
@@ -36,6 +34,7 @@ export default function Login() {
        * Validate form
        */
       if (user.email.length && user.password.length) {
+        setRemember(checkbox);
         const { data } = await api.get('/authenticate', {
           email: user.email,
           password: user.password
@@ -60,19 +59,7 @@ export default function Login() {
           onSignIn('Token');
           return (window.location.href = '/');
         }
-        return alert('Email ou senha incorretos!');
-      } else if (!user.email.length && !user.password.length) {
-        setDialogEmail(true);
-        setDialogPassword(true);
-      } else if (!user.email.length) {
-        setDialogEmail(true);
-      } else {
-        setDialogPassword(true);
       }
-      return setTimeout(() => {
-        setDialogEmail(false);
-        setDialogPassword(false);
-      }, 1500);
     } catch (error) {
       console.log(error);
     }
@@ -89,9 +76,9 @@ export default function Login() {
       <Container>
         <Input
           required
-          dialog={dialogEmail}
           action={addEmail}
           type='email'
+          autoFocus
           fieldName='email'
           placeholder='E-mail*'
           Icon={MdPerson}
@@ -106,7 +93,6 @@ export default function Login() {
         />
         <Input
           required
-          dialog={dialogPassword}
           action={addPassword}
           type='password'
           fieldName='Senha'
@@ -124,10 +110,10 @@ export default function Login() {
         <div className='row'>
           <Input
             type='checkbox'
-            id='remember'
+            id='checkbox'
             label='Lembrar-me'
             onClick={handleRemember}
-            value={remember}
+            value={checkbox}
           />
           <Input
             type='button'

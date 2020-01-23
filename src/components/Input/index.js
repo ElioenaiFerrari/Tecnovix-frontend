@@ -3,6 +3,7 @@ import { Container } from './styles';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Input = React.memo(props => {
+  const [dialog, setDialog] = React.useState(false);
   /**
    * Redux
    */
@@ -21,14 +22,20 @@ const Input = React.memo(props => {
     [state]
   );
 
-  // const validate = React.useCallback(({ target }) => {
-  //   if (target.type === 'email') {
-  //     const filter = /^([\w-]+(?:.[\w-]+))@((?:[\w-]+.)\w[\w-]{0,66}).([a-z]{2,6}(?:.[a-z]{2})?)$/i;
-  //     if (filter.test(String(target.value).toLowerCase())) {
-  //       return target.required;
-  //     }
-  //   }
-  // }, []);
+  const validate = React.useCallback(
+    ({ target }) => {
+      if (props.required && target.value === '') {
+        setDialog(true);
+        target.focus();
+      }
+
+      setTimeout(() => {
+        setDialog(false);
+      }, 1500);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [setDialog]
+  );
 
   return (
     <Container props={props}>
@@ -43,11 +50,15 @@ const Input = React.memo(props => {
           }}
         />
       )}
-      <input {...props} onChange={props.action ? action : null} />
+      <input
+        {...props}
+        onChange={props.action ? action : null}
+        onBlur={validate}
+      />
       {props.label && <p>{props.label}</p>}
 
       {props.required && (
-        <div className='validate ' style={{ opacity: props.dialog ? 1 : 0 }}>
+        <div className='validate ' style={{ opacity: dialog ? 1 : 0 }}>
           <label>O campo {props.fieldName.toLowerCase()} é obrigatório!</label>
         </div>
       )}

@@ -7,6 +7,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   z-index: 1;
+  transition: transform 0.2s ease-out;
 
   #menu {
     display: flex;
@@ -39,5 +40,6 @@ export const Container = styled.div`
     font-weight: bold;
     margin-left: 10px;
     width: 100%;
+    font-size: 17px;
   }
 `;

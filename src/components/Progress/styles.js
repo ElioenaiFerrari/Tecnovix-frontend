@@ -23,11 +23,21 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  .progress:hover {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .progress:hover h1 {
+    font-size: 38px;
   }
 
   .progress h1 {
     color: ${primaryColor};
     font-size: 28px;
+    transition: font-size 0.2s ease-out;
   }
 
   .progress h5 {

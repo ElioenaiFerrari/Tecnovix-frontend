@@ -10,9 +10,14 @@ import GlobalStyle from './styles/global';
  */
 import Routes from './routes';
 import store from './store';
-import { isSigned } from './services/auth';
+import { isSigned, expireToken, getRemember } from './services/auth';
 
 const App = () => {
+  React.useEffect(() => {
+    if (!getRemember()) {
+      expireToken(20000);
+    }
+  }, []);
   return (
     <Provider store={store}>
       <GlobalStyle />

@@ -4,16 +4,18 @@ import { Input } from '../../../components';
 import { primaryColor } from '../../../styles/global';
 import { MdAdd } from 'react-icons/md';
 
-const Header = React.memo(() => {
-  const addClient = React.useCallback(() => {}, []);
+const Header = React.memo(({ modalIsOpen, setModalIsOpen }) => {
+  const openModal = React.useCallback(() => {
+    setModalIsOpen(true);
+  }, [setModalIsOpen]);
 
   return (
     <Container>
       <Input
         value='Adicionar'
         type='button'
-        onClick={addClient}
         Icon={MdAdd}
+        onClick={openModal}
         IconSize={15}
         IconColor='#fff'
         style={{

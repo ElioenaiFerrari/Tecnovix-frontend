@@ -3,7 +3,14 @@ import React from 'react';
 import { Container } from './styles';
 
 import { Input } from '../../../components';
-import { addEmail, addName, addProjects } from '../../../actions/client';
+import {
+  addEmail,
+  addName,
+  addProjects,
+  addEnterprise,
+  addConclused,
+  addWorks
+} from '../../../actions/client';
 import { primaryColor } from '../../../styles/global';
 import { MdClose } from 'react-icons/md';
 import api from '../../../services/api';
@@ -95,6 +102,55 @@ const Add = React.memo(({ modalIsOpen, setModalIsOpen }) => {
         type='number'
         fieldName='projetos'
         placeholder='Qtd. projetos*'
+        // Icon={MdPerson}
+        // IconSize={20}
+        // IconColor='rgba(0, 0, 0, 0.3)'
+        style={{
+          width: '250px',
+          marginTop: '10px',
+          boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+        }}
+      />
+
+      <Input
+        required
+        // dialog={dialogEmail}
+        action={addEnterprise}
+        type='text'
+        fieldName='empresa'
+        placeholder='Empresa*'
+        // Icon={MdPerson}
+        // IconSize={20}
+        // IconColor='rgba(0, 0, 0, 0.3)'
+        style={{
+          width: '250px',
+          marginTop: '10px',
+          boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+        }}
+      />
+      <Input
+        required
+        // dialog={dialogEmail}
+        action={addConclused}
+        type='text'
+        fieldName='concluídos'
+        placeholder='Concluídos*'
+        // Icon={MdPerson}
+        // IconSize={20}
+        // IconColor='rgba(0, 0, 0, 0.3)'
+        style={{
+          width: '250px',
+          marginTop: '10px',
+          boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)'
+        }}
+      />
+      <Input
+        required
+        // dialog={dialogEmail}
+        action={addWorks}
+        type='text'
+        fieldName='Qtd. trabalhos'
+        placeholder='Qtd. trabalhos*'
         // Icon={MdPerson}
         // IconSize={20}
         // IconColor='rgba(0, 0, 0, 0.3)'

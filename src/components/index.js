@@ -5,7 +5,8 @@ import Menu from './Menu';
 import Employee from './Employee';
 import Progress from './Progress';
 import Chart from './Chart';
+import Paginate from './Paginate';
 /**
  * @All_Components
  */
-export { Header, Input, Footer, Menu, Employee, Progress, Chart };
+export { Header, Input, Footer, Menu, Employee, Progress, Chart, Paginate };

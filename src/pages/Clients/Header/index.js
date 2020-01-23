@@ -11,26 +11,28 @@ const Header = React.memo(({ modalIsOpen, setModalIsOpen }) => {
 
   return (
     <Container>
-      <Input
-        value='Adicionar'
-        type='button'
-        Icon={MdAdd}
-        onClick={openModal}
-        IconSize={15}
-        IconColor='#fff'
-        style={{
-          boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
-          width: '100px',
-          height: '30px',
-          backgroundColor: primaryColor,
-          color: '#fff',
-          fontWeight: 'bold',
-          fontSize: 13,
-          padding: 0,
-          cursor: 'pointer',
-          marginLeft: '5px'
-        }}
-      />
+      {!modalIsOpen && (
+        <Input
+          value='Adicionar'
+          type='button'
+          Icon={MdAdd}
+          onClick={openModal}
+          IconSize={15}
+          IconColor='#fff'
+          style={{
+            boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2)',
+            width: '100px',
+            height: '30px',
+            backgroundColor: primaryColor,
+            color: '#fff',
+            fontWeight: 'bold',
+            fontSize: 13,
+            padding: 0,
+            cursor: 'pointer',
+            marginLeft: '5px'
+          }}
+        />
+      )}
       {/* <div className='search'>
         <Input
           value='Nome'

@@ -6,10 +6,10 @@ export const Container = styled.form`
   align-items: center;
   flex-direction: column;
   position: fixed;
-  width: 300px;
-  height: 250px;
+  width: 350px;
+  height: 400px;
   background: #fff;
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
   z-index: 50;
   left: 40%;

@@ -6,13 +6,18 @@ import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { Container } from './styles';
 import Header from '../Header';
 import api from '../../../services/api';
+import { Paginate } from '../../../components';
 
 const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
-  const [clients, setClients] = React.useState([]);
+  const [page, setPage] = React.useState(1);
+  const [clients, setClients] = React.useState({});
+  const [pageCount, setPageCount] = React.useState(1);
 
   React.useEffect(() => {
     async function loadClients() {
-      const { data } = await api.get('/clients');
+      const response = await api.get(`/clients?_page=${page}&_limit=7`);
+
+      const { data, headers } = await response;
 
       /**
        * Columns
@@ -61,10 +66,12 @@ const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
         actions: ''
       }));
 
+      setPageCount(Math.round(headers['x-total-count'] / 7));
       setClients({ columnDefs, rowData });
     }
     loadClients();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <Container>
@@ -78,6 +85,7 @@ const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
           rowData={clients.rowData}
         ></AgGridReact>
       </div>
+      <Paginate setPage={setPage} pages={pageCount ? pageCount : 1} />
     </Container>
   );
 });

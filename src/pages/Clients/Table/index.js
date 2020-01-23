@@ -50,9 +50,7 @@ const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
         },
         {
           headerName: 'Ações',
-          field: 'actions',
-          sortable: true,
-          filter: true
+          field: 'actions'
         }
       ];
       /**
@@ -63,7 +61,7 @@ const Table = React.memo(({ modalIsOpen, setModalIsOpen }) => {
         email: client.email,
         projects: client.projects,
         created_at: client.created_at,
-        actions: ''
+        actions: 'Excluir'
       }));
 
       setPageCount(Math.round(headers['x-total-count'] / 7));

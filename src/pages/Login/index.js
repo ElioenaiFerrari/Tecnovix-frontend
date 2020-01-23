@@ -5,7 +5,7 @@ import { MdPerson, MdVpnKey } from 'react-icons/md';
 import { addEmail, addPassword } from '../../actions/user';
 import { Input, Footer } from '../../components';
 import { useSelector } from 'react-redux';
-import { onSignIn, setRemember } from '../../services/auth';
+import { onSignIn } from '../../services/auth';
 import api from '../../services/api';
 
 export default function Login() {
@@ -34,7 +34,6 @@ export default function Login() {
        * Validate form
        */
       if (user.email.length && user.password.length) {
-        setRemember(checkbox);
         const { data } = await api.get('/authenticate', {
           email: user.email,
           password: user.password
@@ -56,7 +55,7 @@ export default function Login() {
          * if not => nothing else
          */
         if (auth) {
-          onSignIn('Token');
+          onSignIn('Token', checkbox);
           return (window.location.href = '/');
         }
       }

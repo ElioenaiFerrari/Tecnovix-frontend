@@ -2,12 +2,11 @@ import React from 'react';
 
 import { Container } from './styles';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import { primaryColor } from '../../styles/global';
 
 const Paginate = React.memo(({ setPage, pages }) => {
-  const pagesLength = [];
+  let pagesLength = [];
 
-  for (let i = 1; i <= pages; i++) pagesLength.push(i);
+  for (let i = 0; i <= pages; i++) pagesLength.push(i + 1);
 
   const paginate = React.useCallback(
     page => {
@@ -17,13 +16,14 @@ const Paginate = React.memo(({ setPage, pages }) => {
   );
 
   const nextPage = React.useCallback(() => {
+    console.log(pagesLength);
+
     return setPage(c => (c === pagesLength.length ? c : c + 1));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPage]);
   const backPage = React.useCallback(() => {
-    setPage(c => (c === 1 ? c : c - 1));
+    setPage(c => (c <= 1 ? 1 : c - 1));
   }, [setPage]);
-
   return (
     <Container>
       <a className='backNext' onClick={backPage}>

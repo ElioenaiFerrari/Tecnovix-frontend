@@ -23,18 +23,25 @@ export const Container = styled.div`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     justify-content: center;
     align-items: center;
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  div.card:hover {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
   }
 
   div.header {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin-bottom: 20px;
   }
 
   div.header h1 {
     color: #999;
+    margin-left: 5px;
   }
 
   img {
@@ -59,6 +66,7 @@ export const Container = styled.div`
   div.content p {
     font-size: 25px;
     color: ${primaryColor};
+    font-weight: bold;
   }
 
   div.footer {

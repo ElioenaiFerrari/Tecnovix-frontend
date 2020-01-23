@@ -4,11 +4,8 @@ import { Container } from './styles';
 import { Input, Footer } from '../../components';
 import { addEmail } from '../../actions/user';
 import { primaryColor } from '../../styles/global';
-import { useSelector } from 'react-redux';
 
 export default function Forgot() {
-  const user = useSelector(state => state.user);
-
   const backLogin = () => (window.location.href = '/login');
 
   return (

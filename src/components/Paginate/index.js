@@ -18,7 +18,8 @@ const Paginate = React.memo(({ setPage, pages }) => {
 
   const nextPage = React.useCallback(() => {
     return setPage(c => (c === pagesLength.length ? c : c + 1));
-  }, [pagesLength.length, setPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setPage]);
   const backPage = React.useCallback(() => {
     setPage(c => (c === 1 ? c : c - 1));
   }, [setPage]);
